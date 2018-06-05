@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+
+./gradlew installDebug -PminSdkDebug=23  
+adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity
