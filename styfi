@@ -1,4 +1,10 @@
 #! /usr/bin/env sh
 
-./gradlew installDebug -PminSdkDebug=23  
-adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity
+./gradlew installDebug -PminSdkDebug=23
+
+if [ -z ${1+x} ]; 
+	then adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
+else 
+	adb shell am -s $1 start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity; 
+fi  
+
