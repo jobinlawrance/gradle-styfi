@@ -5,6 +5,6 @@
 if [ -z ${1+x} ]; 
 	then adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
 else 
-	adb shell am -s $1 start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity; 
+	adb -s $1 shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity; 
 fi  
 
