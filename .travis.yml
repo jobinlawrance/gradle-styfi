@@ -1,19 +1,23 @@
-language: generic
+dist: trusty
+
 env:
   global:
   - USER="jobinlawrance"
   - REPO="homebrew-hb-osx"
   - GH_REPO="github.com/${USER}/${REPO}.git"
   - secure: Ikv7ZWqfB9SZ8Z2NkO1oUrmr3OBYXwMb6CiS5+0NByyLqTYzG2B7aZyEa//tigW7qhH0FLAoqynp74T5v9sZ86qHPqiYu/tUGUQKQQuS+sXgLZXuNJ61w6ZMx4fecqFB79wlblNnwCqu/y/6MR4v3/nUo5mHQ2/4udAs3oU3ukGCkJahr+q46wX0tLFTSgKRckrIph2r4qBLs8ObibivCmkqmjPmRCmprkA5JQ0lpYv1k9BA0LR9Jf0Ot/RdSulHiR8t6usdHUMTUr1KhzTiSgqCdXoE8E2mIjZbT9HzYR8OUBlDxdhBRSTAm6iSsiP5IIYoRUMAmgucItqoOsVBCdHFm6JdC8FpEep/0SuXjDVmY9ypml9Ynzs4OPq9cdMVpQVPoptb+JKs1c0LOyc1xUOmE2XpGQ6E3HkGoL0fipJfi1atVKGVGzBP9S07hnR4z8nWvuvInlBpGpBNAw5yZ3CZS3IP75DZRPTIC5IgkYsicz+QbVeE0gugudty4QasUMt2sw5v0AqZiar+KVK+1v7ArlceF2lUxCyAh0uef4r+GW+M1NZ6Q5WCR816304sBKplXdSzmpedr7yavchA0pmesGt2tUbwXdA2yiRTgcayFbIV+0tvIPru5BKFfp6ZHO0vdtCXGyZXlz0URilAFsBQ2qCD5KMoe8mCWZZinqc=
-before_deploy:
-- sudo apt-get install wget
-- sudo apt-get install curl
-- sudo apt-get install git-core
-deploy:
-  provider: releases
-  api_key: 855301d2ae1085bc18d16114e7f8ae9ebd472e44
-  file: ''
-  on:
-    repo: jobinlawrance/gradle-styfi
 
-after_deploy: "./brew-deploy.sh"
+jobs:
+  include:
+    before_deploy:
+    - sudo apt-get install wget
+    - sudo apt-get install curl
+    - sudo apt-get install git-core
+    deploy:
+      provider: releases
+      api_key: 855301d2ae1085bc18d16114e7f8ae9ebd472e44
+      file: ''
+      on:
+        repo: jobinlawrance/gradle-styfi
+
+    after_deploy: "./brew-deploy.sh"
