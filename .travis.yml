@@ -1,4 +1,10 @@
 language: node_js
+
+before_install: 
+  - sudo apt-get install wget
+  - sudo apt-get install curl
+  - sudo apt-get install git-core
+
 node_js:
   - "iojs"
   - "7"
