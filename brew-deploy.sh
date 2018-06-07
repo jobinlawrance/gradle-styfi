@@ -16,3 +16,4 @@ git config --global user.name "Travis CI"
 
 git add .
 git commit -m $message
+git push
