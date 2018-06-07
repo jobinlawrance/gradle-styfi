@@ -1,4 +1,3 @@
-dist: trusty
 
 env:
   global:
@@ -7,17 +6,12 @@ env:
   - GH_REPO="github.com/${USER}/${REPO}.git"
   - secure: Ikv7ZWqfB9SZ8Z2NkO1oUrmr3OBYXwMb6CiS5+0NByyLqTYzG2B7aZyEa//tigW7qhH0FLAoqynp74T5v9sZ86qHPqiYu/tUGUQKQQuS+sXgLZXuNJ61w6ZMx4fecqFB79wlblNnwCqu/y/6MR4v3/nUo5mHQ2/4udAs3oU3ukGCkJahr+q46wX0tLFTSgKRckrIph2r4qBLs8ObibivCmkqmjPmRCmprkA5JQ0lpYv1k9BA0LR9Jf0Ot/RdSulHiR8t6usdHUMTUr1KhzTiSgqCdXoE8E2mIjZbT9HzYR8OUBlDxdhBRSTAm6iSsiP5IIYoRUMAmgucItqoOsVBCdHFm6JdC8FpEep/0SuXjDVmY9ypml9Ynzs4OPq9cdMVpQVPoptb+JKs1c0LOyc1xUOmE2XpGQ6E3HkGoL0fipJfi1atVKGVGzBP9S07hnR4z8nWvuvInlBpGpBNAw5yZ3CZS3IP75DZRPTIC5IgkYsicz+QbVeE0gugudty4QasUMt2sw5v0AqZiar+KVK+1v7ArlceF2lUxCyAh0uef4r+GW+M1NZ6Q5WCR816304sBKplXdSzmpedr7yavchA0pmesGt2tUbwXdA2yiRTgcayFbIV+0tvIPru5BKFfp6ZHO0vdtCXGyZXlz0URilAFsBQ2qCD5KMoe8mCWZZinqc=
 
-jobs:
-  include:
-    before_deploy:
-    - sudo apt-get install wget
-    - sudo apt-get install curl
-    - sudo apt-get install git-core
-    deploy:
-      provider: releases
-      api_key: 855301d2ae1085bc18d16114e7f8ae9ebd472e44
-      file: ''
-      on:
-        repo: jobinlawrance/gradle-styfi
+deploy:
+  provider: releases
+  api_key:
+    secure: r43cXzXrNVKY4vFO54dvBQqyurO6ckWNj3SAxxIEz81SHIv5oGYWcC47QozbzbfuvKN26Tr9yAeo5r5W7TlHu10F506gExo6puXNfl2aoa4Q3hcu7pfkwZTmsum0Q502S3OZ23H1G48ZCEYlOoq4kK7A+sboCbRLu74EbJViqPkDUY94Isc1sNSfpGPf4f3hbqLZU4oehl1Rf76ZXwF0tq2J18dZ95nEH9JW6lBvNKgARS4tvCnsQE+MEuGfrdbZg4N9G5PVSR/j5/8H52D9TcqdQQH9zPgkrEwxCdI9BP+GPqu0H5nq9mE72avWRNTDxtPo1RxsRDs3VSOpFycC8fD8bOIUoMZUVB3zmUD7rZGk0+K8NEOrcu+D5JzskDj8wADZRmjzb1moWPDeK5CmQWcuER+4jUWLt5+xEv1ZaPTLczNjQITyz5WYusQkKoZ1gP7HvHkNtNjn0C1oxF+WYx/gab92nZPwXBFdwWUghyK5wKexWO5qVdQyj3wXkDroKVQIePyGxkeVmwEcGrWTzordt8e+AFiHlssc+EEAuzJ7lkSi5oW3iJjx/zc7CFEjTDgUaOuKHGhWWRkN7vjZ1V/DC3b9SBaYCvLjbggnzuXXrhBx3tpNjeEqEmL0BOqWPgPIg7hRwXA10uH8jEMHUCL5ILP+L03qp6HAmKHRmlI=
+  file: ''
+  on:
+    repo: jobinlawrance/gradle-styfi
 
-    after_deploy: "./brew-deploy.sh"
+after_deploy: "./brew-deploy.sh"
