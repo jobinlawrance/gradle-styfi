@@ -8,9 +8,6 @@ before_install:
 script:
   - echo "Travis default script sucks"
 
-node_js:
-  - "iojs"
-
 env:
   global:
   - USER="jobinlawrance"
