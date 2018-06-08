@@ -16,4 +16,4 @@ git config --global user.name "Travis CI"
 
 git add .
 git commit -m $message
-git push
+git push "https://${GH_TOKEN}@${GH_REPO}" master
