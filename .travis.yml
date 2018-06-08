@@ -5,6 +5,9 @@ before_install:
   - sudo apt-get install curl
   - sudo apt-get install git-core
 
+script:
+  - echo "Travis default sucks"
+
 node_js:
   - "iojs"
   - "7"
