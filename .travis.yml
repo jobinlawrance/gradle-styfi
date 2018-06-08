@@ -4,6 +4,7 @@ before_install:
   - sudo apt-get install wget
   - sudo apt-get install curl
   - sudo apt-get install git-core
+  - sudo chmod 777 brew-deploy.sh
 
 script:
   - echo "Travis default script sucks"
