@@ -23,4 +23,5 @@ deploy:
   on:
     repo: jobinlawrance/gradle-styfi
 
-after_deploy: "./brew-deploy.sh"
+after_deploy: 
+  - ./brew-deploy.sh
