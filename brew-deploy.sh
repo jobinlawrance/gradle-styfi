@@ -3,7 +3,7 @@ tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi
 artifactUrl=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tarball_url":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 wget -O artifact.tar.gz $artifactUrl
-sha=$(shasum -a 256 artifact.tar.gz | cut -d " " -f 1 )
+sha=$(sha256sum artifact.tar.gz | cut -d " " -f 1 )
 
 message="Travis build: $TRAVIS_BUILD_NUMBER"
 
@@ -20,9 +20,11 @@ echo "  SHA = \"$sha\""$'\r' >> $constantsFileName
 echo "  VERSION = \"$tag\""$'\r' >> $constantsFileName
 echo "end" >> constants.rb
 
+cat $constantsFileName
+
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
 git add .
 git commit -m $message
-git push "https://${GH_TOKEN}@${GH_REPO}" master 
+git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
