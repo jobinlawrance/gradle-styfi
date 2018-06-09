@@ -7,7 +7,7 @@ sha=$(sha256sum artifact.tar.gz | cut -d " " -f 1 )
 
 message="Travis build: $TRAVIS_BUILD_NUMBER"
 
-git clone git://$GH_REPO
+git clone git://${GH_REPO}
 
 cd homebrew-hb-osx
 
@@ -22,9 +22,10 @@ echo "end" >> constants.rb
 
 cat $constantsFileName
 
+git remote
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
 git add .
-git commit -m $message
+git commit -m ${message}
 git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
