@@ -7,7 +7,7 @@ sha=$(sha256sum artifact.tar.gz | cut -d " " -f 1 )
 
 message="Travis build: $TRAVIS_BUILD_NUMBER"
 
-git clone $GH_REPO
+git clone git://$GH_REPO
 
 cd homebrew-hb-osx
 echo "module Constants \n  URL = \"$artifactUrl\" \n  SHA = \"$sha\" \n  VERSION = \"$tag\" \nend" > constants.rb
