@@ -3,14 +3,23 @@ tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi
 artifactUrl=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tarball_url":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 wget -O artifact.tar.gz $artifactUrl
-sha=$(sha256sum artifact.tar.gz | cut -d " " -f 1 )
+sha=$(shasum -a 256 artifact.tar.gz | cut -d " " -f 1 )
 
 message="Travis build: $TRAVIS_BUILD_NUMBER"
 
 git clone git://$GH_REPO
 
 cd homebrew-hb-osx
-echo "module Constants \n  URL = \"$artifactUrl\" \n  SHA = \"$sha\" \n  VERSION = \"$tag\" \nend" > constants.rb
+
+constantsFileName="constants.rb"
+
+# Creating a Ruby module class to store the constants
+echo "module Constants"$'\r' > $constantsFileName
+echo "  URL = \"$artifactUrl\""$'\r' >> $constantsFileName
+echo "  SHA = \"$sha\""$'\r' >> $constantsFileName
+echo "  VERSION = \"$tag\""$'\r' >> $constantsFileName
+echo "end" >> constants.rb
+
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
