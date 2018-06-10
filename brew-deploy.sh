@@ -27,5 +27,5 @@ git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
 git add .
-git commit -m ${message}
+git commit -m "$message"
 git push "https://${GH_TOKEN}@${GH_REPO}" master > /dev/null 2>&1
