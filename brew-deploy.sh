@@ -1,5 +1,5 @@
 # Get latest tag name and tarball url from github api
-tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | cut -c 2-6) 
+version = $($tagName | cut -c 2-6)
 artifactUrl=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tarball_url":' | sed -E 's/.*"([^"]+)".*/\1/')
 
 #download the tarball artifact and get SHA
@@ -18,7 +18,7 @@ constantsFileName="constants.rb"
 echo "module Constants"$'\r' > $constantsFileName
 echo "  URL = \"$artifactUrl\""$'\r' >> $constantsFileName
 echo "  SHA = \"$sha\""$'\r' >> $constantsFileName
-echo "  VERSION = \"$tagName\""$'\r' >> $constantsFileName
+echo "  VERSION = \"$version\""$'\r' >> $constantsFileName
 echo "end" >> constants.rb
 
 cat $constantsFileName

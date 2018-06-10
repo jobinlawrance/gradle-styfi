@@ -5,6 +5,7 @@ before_install:
   - sudo apt-get install curl
   - sudo apt-get install git-core
   - sudo chmod 777 brew-deploy.sh
+  - npm install github-release-notes -g
 
 script:
   - echo "Travis default script sucks"
@@ -25,5 +26,7 @@ deploy:
     tags: true
     repo: jobinlawrance/gradle-styfi
 
-after_deploy: 
+after_deploy:
+  - tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')  
+  - ./gren.sh
   - ./brew-deploy.sh
