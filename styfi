@@ -1,10 +1,29 @@
 #! /usr/bin/env sh
 
+is_device_set=false
+
+# Resolve arguments
+while getopts ":d:" opt; do
+  case $opt in
+    d)
+      is_device_set=true
+      device_name=$OPTARG
+      ;;
+    :) 
+	  echo ""
+      echo "Option -$OPTARG requires device name as an argument"
+      echo "Check available devices using 'adb devices'" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Gradle build and install
 ./gradlew installDebug -PminSdkDebug=23
 
-if [ -z ${1+x} ]; 
-	then adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
+if [ $is_device_set = true ] ; 
+	then adb -s $device_name shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
 else 
-	adb -s $1 shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity; 
+	adb shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
 fi  
 
