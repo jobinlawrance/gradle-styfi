@@ -1,6 +1,7 @@
 #! /usr/bin/env sh
 
 is_device_set=false
+is_online=false
 
 # Resolve arguments
 while getopts ":d:" opt; do
@@ -9,7 +10,7 @@ while getopts ":d:" opt; do
       is_device_set=true
       device_name=$OPTARG
       ;;
-    :) 
+    :)
 	  echo ""
       echo "Option -$OPTARG requires device name as an argument"
       echo "Check available devices using 'adb devices'" >&2
@@ -18,8 +19,24 @@ while getopts ":d:" opt; do
   esac
 done
 
+while getopts ":o" opt; do
+  case $opt in
+    o)
+      is_online=true
+      ;;
+    :)
+      ;;
+  esac
+done
+
+
+
 # Gradle build and install
-./gradlew installDebug -PminSdkDebug=23
+if [ $is_online = true ] ;
+	then ./gradlew installDebug -PminSdkDebug=23;
+else
+	./gradlew installDebug -PminSdkDebug=23 --offline;
+fi
 
 if [ $is_device_set = true ] ; 
 	then adb -s $device_name shell am start -n com.stylabs.styfi.app.debug/com.stylabs.styfi.app.SplashActivity;
