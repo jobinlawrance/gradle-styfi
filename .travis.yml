@@ -1,44 +1,37 @@
 language: node_js
-
-node_js: 
-  - "lts/*"
-
-before_install: 
-  - sudo apt-get install wget
-  - sudo apt-get install curl
-  - sudo apt-get install git-core
-  - sudo chmod 777 brew-deploy.sh
-  - sudo chmod 777 gren.sh
-  # Repo for Yarn
-  - sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn
-
+node_js:
+- lts/*
+before_install:
+- sudo apt-get install wget
+- sudo apt-get install curl
+- sudo apt-get install git-core
+- sudo chmod 777 brew-deploy.sh
+- sudo chmod 777 gren.sh
+- sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+- sudo apt-get update -qq
+- sudo apt-get install -y -qq yarn
 cache:
   directories:
-  - $HOME/.yarn-cache
-
+  - "$HOME/.yarn-cache"
 script:
-  - echo "Travis default script sucks"
-
+- echo "Travis default script sucks"
 env:
   global:
   - USER="jobinlawrance"
   - REPO="homebrew-hb-osx"
   - GH_REPO="github.com/${USER}/${REPO}.git"
   - secure: Ikv7ZWqfB9SZ8Z2NkO1oUrmr3OBYXwMb6CiS5+0NByyLqTYzG2B7aZyEa//tigW7qhH0FLAoqynp74T5v9sZ86qHPqiYu/tUGUQKQQuS+sXgLZXuNJ61w6ZMx4fecqFB79wlblNnwCqu/y/6MR4v3/nUo5mHQ2/4udAs3oU3ukGCkJahr+q46wX0tLFTSgKRckrIph2r4qBLs8ObibivCmkqmjPmRCmprkA5JQ0lpYv1k9BA0LR9Jf0Ot/RdSulHiR8t6usdHUMTUr1KhzTiSgqCdXoE8E2mIjZbT9HzYR8OUBlDxdhBRSTAm6iSsiP5IIYoRUMAmgucItqoOsVBCdHFm6JdC8FpEep/0SuXjDVmY9ypml9Ynzs4OPq9cdMVpQVPoptb+JKs1c0LOyc1xUOmE2XpGQ6E3HkGoL0fipJfi1atVKGVGzBP9S07hnR4z8nWvuvInlBpGpBNAw5yZ3CZS3IP75DZRPTIC5IgkYsicz+QbVeE0gugudty4QasUMt2sw5v0AqZiar+KVK+1v7ArlceF2lUxCyAh0uef4r+GW+M1NZ6Q5WCR816304sBKplXdSzmpedr7yavchA0pmesGt2tUbwXdA2yiRTgcayFbIV+0tvIPru5BKFfp6ZHO0vdtCXGyZXlz0URilAFsBQ2qCD5KMoe8mCWZZinqc=
-
+  - secure: vMg2bVtHwuTig2NlozNWOaigIbgPs/uLtyw225jfu4A/D3R3IiBwQvZfjBWaCHIycPzeLFWBS+A+sQo244WpnO1rtWTb+FjTNZ0lFZTWD+Nz/2D/NEoZkkQ3C5o/3uzMvi+JR2le96Y0FzE+DonxAgWgkn7jozQxFj4MC85q2OQLZQEOF2G2SNDUEh+DzfcqQ8NMhyNciRtcwUUFKqNajwtj2Sbdtv6ARwWDIo634HNewwXNoCO9TI+yHehFKWFLweaZ27SjGX5u/GavYWih/MUA49qy9xRWL9CKSmnyW8eLnAqlj2uZjbIVjttpvdyvyhcGN0hjO/IQ8OC3LKpL2jMVpAYINXSB0B6YTQGtrWxZ7ghkQcHudCF8Fp/3VhQ78bMnuKs3S9tIep2HQM0V+ccXqszJkmOPeoM1Op4a7gc+AH+clOlSZUtMuW16KKqcJEUi/QtZjn8omqueQRy7dwsl943uLsDwYeh08kp+Na53+32ubFVOHanK4kySsJP/eG4KdmlyE0SVjeNK76LpXc0WOuIB/+m2tSaIcJWixxDtj63kkz5Oafx/aA/MvjP6X8eSY/VhozD1n/GHxlsIyd8/qQaBKrpLoQUOCzuZhSyPTNgRdJV6syh07RfhIeOmAw95VzvA6Vc1TIv2BrzlnR5OHmP+BHQs2L/3G0tIdf4=
+  - secure: i8atNrA4IjQvtoC8w//Tr90jH0lskmiJv9ZuD6GGBrp19jZLAxffjMfYo19rAWL/8wUw2SHmOo+ceviNRYSvROb0vjOC+UplGPuJjYFVsxXrWBr+sQy0BxUcc17VKfOwWYiw4nFnFlev2j1N9ZjNsWxFaMGqYiCQ82V99ftFhKPjbpfhLH+VUJU+TC+TClmQ5qiI99qRMh8IP+9g+ooVxP+BJnXA3PkZn6dEmuhnoVoP5jv4DF3G5/qY3iSP5JWx2/w/6Tk/e5K+lnHBk2ua78tLnRZriei6YtWsRmMnoHBEFlXXOmgyovyJkgQwvBddSLV7n0O1HbS6oM/aLVwcUc1yVA1nrcAtoZlYMaQt5bciv95h4FH5GDVbX4F/pDXj1090/vjCI5w04aw4OFBBTxzBd9QqshBHHy4JvnQMHrXnEgeD4I1G3SIdF0y27HtFX60N403H2OeH/ggrjPRS9ITQ90fNGHq7PR13pepeOb0igc4OXrlgXyh4F5Mx+nuykz2UKUMWzdNFhsUKzSBEyIEXdNGch1PhqWharKUOLP7+N3RCqCRspgf+CxDrySiUTIsW7tLOE58uol/3tlZ71BlTZnWPDtbwwStOL6yfi0vzuF5yH9nI4wtVhYQcutcJZdIfA/tqwuqGk7Sz43hBEJNslXg0sV3xdbnr98N30pg=
 deploy:
   provider: releases
   api_key:
     secure: r43cXzXrNVKY4vFO54dvBQqyurO6ckWNj3SAxxIEz81SHIv5oGYWcC47QozbzbfuvKN26Tr9yAeo5r5W7TlHu10F506gExo6puXNfl2aoa4Q3hcu7pfkwZTmsum0Q502S3OZ23H1G48ZCEYlOoq4kK7A+sboCbRLu74EbJViqPkDUY94Isc1sNSfpGPf4f3hbqLZU4oehl1Rf76ZXwF0tq2J18dZ95nEH9JW6lBvNKgARS4tvCnsQE+MEuGfrdbZg4N9G5PVSR/j5/8H52D9TcqdQQH9zPgkrEwxCdI9BP+GPqu0H5nq9mE72avWRNTDxtPo1RxsRDs3VSOpFycC8fD8bOIUoMZUVB3zmUD7rZGk0+K8NEOrcu+D5JzskDj8wADZRmjzb1moWPDeK5CmQWcuER+4jUWLt5+xEv1ZaPTLczNjQITyz5WYusQkKoZ1gP7HvHkNtNjn0C1oxF+WYx/gab92nZPwXBFdwWUghyK5wKexWO5qVdQyj3wXkDroKVQIePyGxkeVmwEcGrWTzordt8e+AFiHlssc+EEAuzJ7lkSi5oW3iJjx/zc7CFEjTDgUaOuKHGhWWRkN7vjZ1V/DC3b9SBaYCvLjbggnzuXXrhBx3tpNjeEqEmL0BOqWPgPIg7hRwXA10uH8jEMHUCL5ILP+L03qp6HAmKHRmlI=
-
   on:
     tags: true
     repo: jobinlawrance/gradle-styfi
-
 after_deploy:
-  - tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')  
-  - ./gren.sh
-  - ./brew-deploy.sh
+- tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+- "./gren.sh"
+- "./brew-deploy.sh"
