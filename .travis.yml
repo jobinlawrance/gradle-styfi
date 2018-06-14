@@ -29,6 +29,5 @@ deploy:
     tags: true
     repo: jobinlawrance/gradle-styfi
 after_deploy:
-- tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 - "./gren.sh"
 - "./brew-deploy.sh"
