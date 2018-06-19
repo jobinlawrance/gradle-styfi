@@ -7,7 +7,6 @@ before_install:
 - sudo apt-get install git-core
 - sudo chmod 777 brew-deploy.sh
 - sudo chmod 777 gren.sh
-
 cache:
   directories:
   - "$HOME/.yarn-cache"
@@ -31,3 +30,6 @@ deploy:
 after_deploy:
 - "./gren.sh"
 - "./brew-deploy.sh"
+notifications:
+  slack:
+    secure: XMAby9XmFhos8EnbX+wGbpfVCDbGx1ptC1sGWTOlim5ucbwRDEAqrFFgc3125eiR3unzFZQ9TkfS1jLLk0KosqN0eSeaaMyCk78FFp1kdUmHDqWMLQcyHOMlAAQTlsMDZ59aN1Vf/A65WiLQqwdLkAeHaGRHhaSOgMjspVmyPn5me+fM6HDMxkcPOWxXkNIeBIk5aP2V0TrvQ8e1SO+A3UhGtn5qj1vvij+pH3odXYfgDj6Jmjl/MNvrc0P0AdjvDEKdyAlag6W62sLM0w/pLunTqpwKD/DHnCChbAXzohGJ8eRrs3ApCpDegOTIF20WGjDBXwZDiflee5em/0M7DsuAmw81T6hqz6Is0gs/vjiHixaUtgckR62Ae/iNDJno1Ou5gSxkqo2IIhW0ZYpCNiCKSvIwP+yrnhUZfN/t+wFxbdgBMwMfpzTed2YuyWPnnGwAfuDUBD02UFmhwiy0xcajuKfpvWb2s8OLSqeOmRT2HXWn7BsRB/M+kKX5xHN92uNHRoYI83jaMS6Zr/KrysdsGwRPzLodE2bs+qLqfeYdlbgO5jffzRmDHQGKR8eymDvpXgCKE1jiuLKZ/8t6CTxgNJgmrM3PERYs+2BM7JWj5pc94klqB9uL94mM91BeLeA589LRcCP6wDa6Z5tjBqf0Qn0TxHAiF5gvHjJKAYE=

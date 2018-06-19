@@ -4,4 +4,4 @@ tagName=$(curl --silent "https://api.github.com/repos/jobinlawrance/gradle-styfi
 
 gren release --tags=$tagName --override --token=$GREN_TOKEN
 
-gren changelog --token=$GREN_TOKEN
+gren changelog --generate --override --token=$GREN_TOKEN
